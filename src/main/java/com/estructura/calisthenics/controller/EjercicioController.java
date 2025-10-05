@@ -16,7 +16,7 @@ import com.estructura.calisthenics.service.EjercicioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 @RestController
-@RequestMapping("/Ejercicio")
+@RequestMapping("api/Ejercicio")
 @RequiredArgsConstructor
 public class EjercicioController {
 
@@ -40,5 +40,12 @@ public class EjercicioController {
     @GetMapping("/listAll")
     public ResponseEntity<List<Ejercicio>> listAllTasks() {
         return ResponseEntity.ok().body(ejercicioService.listAllEjercicios());
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateEjercicio(@PathVariable Long id, @RequestBody EjercicioDTO ejerciciodto) {
+
+        Ejercicio updatedEjercicio = ejercicioService.updateEjercicio(id, ejerciciodto);
+        return ResponseEntity.ok(updatedEjercicio);
     }
 }

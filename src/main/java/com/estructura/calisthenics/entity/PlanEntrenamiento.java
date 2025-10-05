@@ -6,22 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Ejercicio")
+@Table(name = "PlanEntrenamiento")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Ejercicio {
+public class PlanEntrenamiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
     private String nombre;
-
     private String descripcion;
+    private String objetivo;
 
-    public Ejercicio(String nombre, String descripcion) {
+    public PlanEntrenamiento(String nombre, String descripcion, String objetivo) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.objetivo = objetivo;
     }
 }

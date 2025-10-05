@@ -5,23 +5,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 @Entity
-@Table(name = "Ejercicio")
+@Table(name = "Entrenamiento")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Ejercicio {
+public class Entrenamiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String nombre;
+    private double caloriasTotales;
+    private int dia;
 
-    private String descripcion;
-
-    public Ejercicio(String nombre, String descripcion) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
+    public Entrenamiento(int dia, double caloriasTotales) {
+        this.dia = dia;
+        this.caloriasTotales = caloriasTotales;
     }
 }
