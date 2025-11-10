@@ -1,7 +1,8 @@
 [build]
-builder = "nixpacks"
+builder = "dockerfile"
+dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "java -jar build/libs/calisthenics-0.0.1-SNAPSHOT.jar"
+# No startCommand needed - handled by Dockerfile ENTRYPOINT
 
 
