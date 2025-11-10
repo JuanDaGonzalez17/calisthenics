@@ -63,7 +63,7 @@ public class Jugador_x_Partido_x_CarroServiceImpl implements Jugador_x_Partido_x
 
     @Override
     public List<JugadorEstadisticasDTO> getEstadisticasFiltradas(
-            Long idJugador,
+            String identificador,
             Long idDecal,
             Long idBoost,
             Long idBody,
@@ -72,17 +72,36 @@ public class Jugador_x_Partido_x_CarroServiceImpl implements Jugador_x_Partido_x
             Long idGamemode,
             Long idTemporada
     ) {
-        if (idJugador == null) {
-            throw new IllegalArgumentException("idJugador es obligatorio");
+        if (identificador == null || identificador.trim().isEmpty()) {
+            throw new IllegalArgumentException("El identificador del jugador es obligatorio");
         }
 
+        // Determinar si el identificador es un ID numérico o un username
+        Long idJugador;
+        String username;
+
+        if (identificador.matches("\\d+")) {
+            // Es un ID numérico
+            idJugador = Long.parseLong(identificador);
+            // Obtener el username del jugador
+            Jugador jugador = jugadorRepository.findById(idJugador)
+                    .orElseThrow(() -> new IllegalArgumentException("Jugador no encontrado con ID: " + idJugador));
+            username = jugador.getUserName();
+        } else {
+            // Es un username
+            Jugador jugador = jugadorRepository.findByUserName(identificador)
+                    .orElseThrow(() -> new IllegalArgumentException("Jugador no encontrado con username: " + identificador));
+            idJugador = jugador.getId();
+            username = jugador.getUserName();
+        }
+
+        // Ahora ejecutamos la query con el ID del jugador
         List<Object[]> rows = repository.getEstadisticasFiltradasRaw(
                 idJugador, idDecal, idBoost, idBody, idWheels, idEstadio, idGamemode, idTemporada
         );
 
         if (rows == null || rows.isEmpty()) {
-            // si no hay registros que cumplan los filtros, devolver un DTO con ceros y el username si existe
-            String username = jugadorRepository.findById(idJugador).map(Jugador::getUserName).orElse("UNKNOWN");
+            // si no hay registros que cumplan los filtros, devolver un DTO con ceros
             JugadorEstadisticasDTO empty = new JugadorEstadisticasDTO(idJugador, username, 0L, 0L, 0L, 0L, 0L, 0.0, 0L, 0.0);
             return Collections.singletonList(empty);
         }
@@ -90,7 +109,7 @@ public class Jugador_x_Partido_x_CarroServiceImpl implements Jugador_x_Partido_x
         List<JugadorEstadisticasDTO> result = new ArrayList<>();
         for (Object[] row : rows) {
             Long jugadorId = row[0] == null ? idJugador : ((Number) row[0]).longValue();
-            String username = row[1] == null ? "UNKNOWN" : row[1].toString();
+            String userName = row[1] == null ? username : row[1].toString();
             Long goles = row[2] == null ? 0L : ((Number) row[2]).longValue();
             Long asistencias = row[3] == null ? 0L : ((Number) row[3]).longValue();
             Long salvadas = row[4] == null ? 0L : ((Number) row[4]).longValue();
@@ -99,7 +118,7 @@ public class Jugador_x_Partido_x_CarroServiceImpl implements Jugador_x_Partido_x
             long tiros = row.length > 7 && row[7] != null ? ((Number) row[7]).longValue() : 0L;
             double winPct = partidos == 0 ? 0.0 : (victorias.doubleValue() * 100.0) / (double) partidos;
             double goalShotRatio = tiros == 0L ? 0.0 : goles.doubleValue() / (double) tiros;
-            result.add(new JugadorEstadisticasDTO(jugadorId, username, goles, asistencias, salvadas, victorias, partidos, winPct, tiros, goalShotRatio));
+            result.add(new JugadorEstadisticasDTO(jugadorId, userName, goles, asistencias, salvadas, victorias, partidos, winPct, tiros, goalShotRatio));
         }
 
         return result;

@@ -31,9 +31,9 @@ class ApiService {
   }
 
   // Player Stats
-  async getPlayerStats(idJugador: number, filters?: StatsFilters): Promise<PlayerStats> {
-    const params = new URLSearchParams({ idJugador: idJugador.toString() });
-    
+  async getPlayerStats(identificador: string, filters?: StatsFilters): Promise<PlayerStats> {
+    const params = new URLSearchParams();
+
     if (filters) {
       Object.entries(filters).forEach(([key, value]) => {
         if (value !== undefined) {
@@ -42,10 +42,12 @@ class ApiService {
       });
     }
 
-    const response = await fetch(
-      `${API_BASE_URL}/jugador_x_partido_x_carro/estadisticas?${params}`,
-      { headers: this.getHeaders() }
-    );
+    const queryString = params.toString();
+    const url = queryString
+      ? `${API_BASE_URL}/jugador_x_partido_x_carro/estadisticas/${identificador}?${queryString}`
+      : `${API_BASE_URL}/jugador_x_partido_x_carro/estadisticas/${identificador}`;
+
+    const response = await fetch(url, { headers: this.getHeaders() });
     if (!response.ok) throw new Error("Failed to fetch player stats");
     const data = await response.json();
     // Handle array response with single object

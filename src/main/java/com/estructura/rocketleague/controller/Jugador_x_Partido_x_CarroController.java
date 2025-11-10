@@ -49,9 +49,9 @@ public class Jugador_x_Partido_x_CarroController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/estadisticas")
+    @GetMapping("/estadisticas/{identificador}")
     public ResponseEntity<List<JugadorEstadisticasDTO>> estadisticas(
-            @RequestParam Long idJugador,
+            @PathVariable String identificador,
             @RequestParam(required = false) Long idDecal,
             @RequestParam(required = false) Long idBoost,
             @RequestParam(required = false) Long idBody,
@@ -60,14 +60,14 @@ public class Jugador_x_Partido_x_CarroController {
             @RequestParam(required = false) Long idGamemode,
             @RequestParam(required = false) Long idTemporada
     ) {
-        if (idJugador == null) {
+        try {
+            List<JugadorEstadisticasDTO> result = service.getEstadisticasFiltradas(
+                    identificador, idDecal, idBoost, idBody, idWheels, idEstadio, idGamemode, idTemporada
+            );
+            return ResponseEntity.ok(result);
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().build();
         }
-
-        List<JugadorEstadisticasDTO> result = service.getEstadisticasFiltradas(
-                idJugador, idDecal, idBoost, idBody, idWheels, idEstadio, idGamemode, idTemporada
-        );
-        return ResponseEntity.ok(result);
     }
 
     @CrossOrigin(origins = "*")

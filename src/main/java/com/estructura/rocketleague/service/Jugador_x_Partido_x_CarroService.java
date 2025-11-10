@@ -12,8 +12,10 @@ public interface Jugador_x_Partido_x_CarroService {
     Jugador_x_Partido_x_Carro save(Jugador_x_Partido_x_Carro e);
     List<Jugador_x_Partido_x_Carro> listAll();
     Jugador_x_Partido_x_Carro update(Long id, Jugador_x_Partido_x_CarroDTO dto);
+
+    // Método unificado que acepta tanto ID como username
     List<JugadorEstadisticasDTO> getEstadisticasFiltradas(
-            Long idJugador,
+            String identificador, // puede ser ID numérico o username
             Long idDecal,
             Long idBoost,
             Long idBody,

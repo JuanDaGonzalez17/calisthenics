@@ -19,7 +19,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
   const navigate = useNavigate();
-  const [selectedPlayerId, setSelectedPlayerId] = useState<number | null>(null);
+  const [selectedPlayerId, setSelectedPlayerId] = useState<string | null>(null);
   const [playerStats, setPlayerStats] = useState<PlayerStats | null>(null);
   const [playerRanks, setPlayerRanks] = useState<PlayerRank[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -40,25 +40,15 @@ const Index = () => {
     }
   };
 
-  const handlePlayerSearch = async (playerIdStr: string) => {
-    const playerId = parseInt(playerIdStr);
-    if (isNaN(playerId)) {
-      toast({
-        title: "Error",
-        description: "Por favor ingresa un ID de jugador válido",
-        variant: "destructive",
-      });
-      return;
-    }
-
+  const handlePlayerSearch = async (identificador: string) => {
     setIsLoading(true);
     try {
-      const [stats, ranks] = await Promise.all([
-        apiService.getPlayerStats(playerId),
-        apiService.getPlayerRanks(playerId),
-      ]);
-      
-      setSelectedPlayerId(playerId);
+      const stats = await apiService.getPlayerStats(identificador);
+
+      // Get player ranks using the jugadorId from the stats response
+      const ranks = await apiService.getPlayerRanks(stats.jugadorId);
+
+      setSelectedPlayerId(identificador);
       setPlayerStats(stats);
       setPlayerRanks(ranks);
     } catch (error) {
@@ -195,11 +185,11 @@ const Index = () => {
               </TabsContent>
 
               <TabsContent value="cars" className="mt-6">
-                <CarPerformance playerId={selectedPlayerId} />
+                <CarPerformance playerId={playerStats.jugadorId} />
               </TabsContent>
 
               <TabsContent value="seasons" className="mt-6">
-                <SeasonPerformance playerId={selectedPlayerId} />
+                <SeasonPerformance playerId={playerStats.jugadorId} />
               </TabsContent>
 
               <TabsContent value="leaderboard" className="mt-6">
