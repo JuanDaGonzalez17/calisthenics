@@ -1,0 +1,12 @@
+{
+  "providers": ["java"],
+  "phases": {
+    "setup": {
+      "nixPkgs": ["openjdk21"]
+    },
+    "build": {
+      "cmds": ["./gradlew clean bootJar --no-daemon"]
+    }
+  }
+}
+
