@@ -5,126 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28284877-0aff-4d85-a285-aef4241c30ad" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AUTHENTICATION_IMPLEMENTATION.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/OAUTH_SETUP_GUIDE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UNIFIED_ESTADISTICAS_ENDPOINT.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/RocketLeagueApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/config/OAuth2AuthenticationSuccessHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/BodyController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/BoostController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/CarroController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/DecalController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/EstadioController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/GameModeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/JugadorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/Jugador_x_Partido_x_CarroController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/Jugador_x_Rango_x_GamemodeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/PaisController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/PartidoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/RangoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/Rango_x_GamemodeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/TemporadaController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/controller/WheelsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/AuthResponseDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/BodyDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/BoostDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/CarPerformanceDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/CarroDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/DecalDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/EstadioDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/GameModeDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/JugadorDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/JugadorEstadisticasDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/Jugador_x_Partido_x_CarroDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/Jugador_x_Rango_x_GamemodeDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/LeaderboardEntryDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/PaisDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/PartidoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/RangoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/Rango_x_GamemodeDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/SeasonPerformanceDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/TemporadaDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/UserDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/dto/WheelsDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Body.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Boost.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Carro.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Decal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Estadio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/GameMode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Jugador.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Jugador_x_Partido_x_Carro.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Jugador_x_Rango_x_Gamemode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Pais.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Partido.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Rango.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Rango_x_Gamemode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Temporada.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/entity/Wheels.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/BodyRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/BoostRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/CarroRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/DecalRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/EstadioRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/GameModeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/JugadorRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/Jugador_x_Partido_x_CarroRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/Jugador_x_Rango_x_GamemodeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/PaisRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/PartidoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/RangoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/Rango_x_GamemodeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/TemporadaRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/repository/WheelsRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/security/JwtAuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/security/JwtTokenProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/BodyService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/BoostService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/CarroService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/DecalService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/EstadioService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/GameModeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/JugadorService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/Jugador_x_Partido_x_CarroService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/Jugador_x_Rango_x_GamemodeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/PaisService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/PartidoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/RangoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/Rango_x_GamemodeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/TemporadaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/WheelsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/BodyServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/BoostServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/CarroServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/DecalServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/EstadioServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/GameModeServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/JugadorServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/Jugador_x_Partido_x_CarroServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/Jugador_x_Rango_x_GamemodeServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/PaisServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/PartidoServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/RangoServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/Rango_x_GamemodeServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/TemporadaServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/estructura/rocketleague/service/impl/WheelsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/estructura/rocketleague/CalisthenicsApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/estructura/rocketleague/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/estructura/rocketleague/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +16,9 @@
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/backend">
       <ProjectState />
     </projectState>
   </component>
@@ -195,10 +81,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Build backend.executor": "Run",
     "Gradle.Build calisthenics.executor": "Run",
     "Gradle.Build rocketleague.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
     "Gradle.rocketleague [javadoc].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -207,7 +95,9 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.CalisthenicsApplication.executor": "Run",
+    "Spring Boot.RocketLeagueApplication (1).executor": "Run",
     "Spring Boot.RocketLeagueApplication.executor": "Run",
+    "Spring Boot.RocketLeagueApplication_.executor": "Run",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
@@ -220,6 +110,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "G:\\Documents\\UdeA\\Estudio\\Semestre 2025-2\\Estructura de Datos y Laboratorio\\rocketleague\\frontend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
@@ -236,6 +127,28 @@
       <recent name="com.estructura.calisthenics.entity" />
       <recent name="com.estructura.calisthenics.dto" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="configurationStatuses">
+      <map>
+        <entry key="SpringBootApplicationConfigurationType">
+          <value>
+            <map>
+              <entry key="RocketLeagueApplication" value="STOPPED" />
+              <entry key="RocketLeagueApplication_" value="FAILED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="RunManager" selected="Spring Boot.RocketLeagueApplication">
     <configuration name="rocketleague [javadoc]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
@@ -260,6 +173,15 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
     <configuration name="CalisthenicsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="envFilePaths">
         <option value="$PROJECT_DIR$/.env" />
@@ -273,15 +195,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RocketLeagueApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="RocketLeagueApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="envFilePaths">
-        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/backend/.env" />
+      </option>
+      <module name="com.estructura.calisthenics.main" />
+      <selectedOptions>
+        <option name="environmentVariables" />
+      </selectedOptions>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.estructura.rocketleague.RocketLeagueApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RocketLeagueApplication_" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="C:/Program Files/Java/jdk-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="envFilePaths">
+        <option value="$PROJECT_DIR$/backend/.env" />
       </option>
       <module name="calisthenics.main" />
       <selectedOptions>
         <option name="environmentVariables" />
       </selectedOptions>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.estructura.rocketleague.RocketLeagueApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.estructura.rocketleague.RocketLeagueApplication&#10;}com.estructura.rocketleague.RocketLeagueApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.estructura.rocketleague.*" />
@@ -294,14 +231,15 @@
     </configuration>
     <list>
       <item itemvalue="Gradle.rocketleague [javadoc]" />
-      <item itemvalue="Spring Boot.CalisthenicsApplication" />
       <item itemvalue="Spring Boot.RocketLeagueApplication" />
+      <item itemvalue="Spring Boot.CalisthenicsApplication" />
+      <item itemvalue="Spring Boot.RocketLeagueApplication_" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.RocketLeagueApplication" />
+        <item itemvalue="Spring Boot.RocketLeagueApplication_" />
         <item itemvalue="Gradle.rocketleague [javadoc]" />
-        <item itemvalue="Spring Boot.RocketLeagueApplication" />
+        <item itemvalue="Spring Boot.RocketLeagueApplication_" />
         <item itemvalue="Gradle.rocketleague [javadoc]" />
       </list>
     </recent_temporary>
@@ -359,7 +297,9 @@
       <workItem from="1762733683700" duration="2034000" />
       <workItem from="1762743215173" duration="1795000" />
       <workItem from="1762745041429" duration="1605000" />
-      <workItem from="1762791388084" duration="2182000" />
+      <workItem from="1762791388084" duration="2812000" />
+      <workItem from="1762795240042" duration="1386000" />
+      <workItem from="1762796667912" duration="1578000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,10 @@
+[build]
+builder = "nixpacks"
+buildCommand = "./gradlew clean bootJar"
+
+[deploy]
+startCommand = "java -jar build/libs/calisthenics-0.0.1-SNAPSHOT.jar"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+web: java -jar build/libs/calisthenics-0.0.1-SNAPSHOT.jar
+
