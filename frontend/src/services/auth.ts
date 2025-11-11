@@ -48,29 +48,35 @@ class AuthService {
         window.location.href = `${API_BASE_URL}/oauth2/authorization/google`;
     }
 
-    // Handle OAuth callback (extract token from URL or fetch from backend)
-    async handleCallback(): Promise<User | null> {
+    // Handle OAuth callback (extract token from URL parameters)
+    handleCallback(): User | null {
         try {
-            // After OAuth, Spring Security should redirect back to frontend
-            // You'll need to implement a backend endpoint that returns user info + JWT
-            const response = await fetch(`${API_BASE_URL}/api/auth/user`, {
-                credentials: "include", // Include cookies for session
-            });
+            // Extract token and user info from URL parameters
+            // Backend redirects to: /auth?token=xxx&userId=123&email=...&name=...&picture=...
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+            const userId = urlParams.get('userId');
+            const email = urlParams.get('email');
+            const name = urlParams.get('name');
+            const picture = urlParams.get('picture');
 
-            if (!response.ok) {
-                throw new Error("Failed to get user info");
-            }
+            if (token && userId && email && name) {
+                // Store token
+                this.setToken(token);
 
-            const data = await response.json();
+                // Store user info
+                const user: User = {
+                    id: parseInt(userId, 10),
+                    email,
+                    name,
+                    picture: picture || undefined,
+                };
+                this.setUser(user);
 
-            // Store token and user info
-            if (data.token) {
-                this.setToken(data.token);
-            }
+                // Clean up URL (remove query parameters)
+                window.history.replaceState({}, document.title, window.location.pathname);
 
-            if (data.user) {
-                this.setUser(data.user);
-                return data.user;
+                return user;
             }
 
             return null;
@@ -80,22 +86,46 @@ class AuthService {
         }
     }
 
-    // Logout
-    async logout(): Promise<void> {
+    // Validate current token with backend
+    async validateToken(): Promise<User | null> {
+        const token = this.getToken();
+        if (!token) return null;
+
         try {
-            // Call backend logout endpoint
-            await fetch(`${API_BASE_URL}/logout`, {
-                method: "POST",
-                credentials: "include",
+            const response = await fetch(`${API_BASE_URL}/api/auth/user`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
             });
+
+            if (!response.ok) {
+                // Token is invalid or expired
+                this.logout();
+                return null;
+            }
+
+            const data = await response.json();
+
+            // Update stored user info
+            if (data.user) {
+                this.setUser(data.user);
+                return data.user;
+            }
+
+            return null;
         } catch (error) {
-            console.error("Error logging out:", error);
-        } finally {
-            // Clear local storage
-            localStorage.removeItem("authToken");
-            localStorage.removeItem("user");
-            localStorage.removeItem("returnUrl");
+            console.error("Error validating token:", error);
+            this.logout();
+            return null;
         }
+    }
+
+    // Logout
+    logout(): void {
+        // Clear local storage
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("user");
+        localStorage.removeItem("returnUrl");
     }
 
     // Get return URL after login

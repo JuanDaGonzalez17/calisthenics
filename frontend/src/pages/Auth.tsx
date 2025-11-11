@@ -18,25 +18,17 @@ export default function Auth() {
       return;
     }
 
-    // Check if returning from OAuth callback
-    const checkAuthStatus = async () => {
-      try {
-        const user = await authService.handleCallback();
-        if (user) {
-          toast({
-            title: "Bienvenido!",
-            description: `Has iniciado sesión como ${user.name}`,
-          });
-          const returnUrl = authService.getReturnUrl();
-          authService.clearReturnUrl();
-          navigate(returnUrl);
-        }
-      } catch (error) {
-        console.error("Error checking auth status:", error);
-      }
-    };
-
-    checkAuthStatus();
+    // Check if returning from OAuth callback (token in URL)
+    const user = authService.handleCallback();
+    if (user) {
+      toast({
+        title: "Bienvenido!",
+        description: `Has iniciado sesión como ${user.name}`,
+      });
+      const returnUrl = authService.getReturnUrl() || "/";
+      authService.clearReturnUrl();
+      navigate(returnUrl);
+    }
   }, [navigate, toast]);
 
   const handleGoogleLogin = () => {

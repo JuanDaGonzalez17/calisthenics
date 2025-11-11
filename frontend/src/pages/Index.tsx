@@ -26,18 +26,9 @@ const Index = () => {
   const [filters, setFilters] = useState<FilterType>({});
   const { toast } = useToast();
 
-  const handleLogout = async () => {
-    try {
-      await authService.logout();
-      navigate("/auth");
-    } catch (error) {
-      console.error("Error logging out:", error);
-      toast({
-        title: "Error",
-        description: "Error al cerrar sesión",
-        variant: "destructive",
-      });
-    }
+  const handleLogout = () => {
+    authService.logout();
+    navigate("/auth");
   };
 
   const handlePlayerSearch = async (identificador: string) => {
