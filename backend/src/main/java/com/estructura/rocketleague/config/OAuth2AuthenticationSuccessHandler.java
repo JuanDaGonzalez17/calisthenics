@@ -6,6 +6,7 @@ import com.estructura.rocketleague.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -18,6 +19,10 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
     private final JwtTokenProvider tokenProvider;
     private final UserService userService;
+
+    @Value("${redirectUri}")
+    private String redirectUri;
+
 
     public OAuth2AuthenticationSuccessHandler(JwtTokenProvider tokenProvider,
                                              UserService userService) {
@@ -50,7 +55,7 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         request.getSession().setAttribute("user_picture", user.getPictureUrl());
 
         // Redirect back to frontend
-        getRedirectStrategy().sendRedirect(request, response, "http://localhost:8081/auth");
+        getRedirectStrategy().sendRedirect(request, response, redirectUri);
     }
 }
 
