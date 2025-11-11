@@ -47,15 +47,26 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
         // Generate JWT token
         String token = tokenProvider.generateToken(user.getId(), user.getEmail());
 
-        // Store user info in session for the auth endpoint to retrieve
-        request.getSession().setAttribute("jwt_token", token);
-        request.getSession().setAttribute("user_id", user.getId());
-        request.getSession().setAttribute("user_email", user.getEmail());
-        request.getSession().setAttribute("user_name", user.getName());
-        request.getSession().setAttribute("user_picture", user.getPictureUrl());
+        // Build redirect URL with token and user info as query parameters
+        String targetUrl = String.format("%s?token=%s&userId=%d&email=%s&name=%s&picture=%s",
+                redirectUri,
+                token,
+                user.getId(),
+                urlEncode(user.getEmail()),
+                urlEncode(user.getName()),
+                urlEncode(user.getPictureUrl() != null ? user.getPictureUrl() : "")
+        );
 
-        // Redirect back to frontend
-        getRedirectStrategy().sendRedirect(request, response, redirectUri);
+        // Redirect back to frontend with token in URL
+        getRedirectStrategy().sendRedirect(request, response, targetUrl);
+    }
+
+    private String urlEncode(String value) {
+        try {
+            return java.net.URLEncoder.encode(value, "UTF-8");
+        } catch (Exception e) {
+            return value;
+        }
     }
 }
 

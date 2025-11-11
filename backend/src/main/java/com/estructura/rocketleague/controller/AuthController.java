@@ -2,9 +2,12 @@ package com.estructura.rocketleague.controller;
 
 import com.estructura.rocketleague.dto.AuthResponseDTO;
 import com.estructura.rocketleague.dto.UserDTO;
+import com.estructura.rocketleague.entity.User;
+import com.estructura.rocketleague.security.JwtTokenProvider;
+import com.estructura.rocketleague.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,31 +15,50 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class AuthController {
 
+    private final JwtTokenProvider tokenProvider;
+    private final UserService userService;
+
+    public AuthController(JwtTokenProvider tokenProvider, UserService userService) {
+        this.tokenProvider = tokenProvider;
+        this.userService = userService;
+    }
+
     @GetMapping("/user")
     public ResponseEntity<?> getCurrentUser(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);
+        // Get JWT from Authorization header
+        String jwt = getJwtFromRequest(request);
 
-        if (session == null) {
-            return ResponseEntity.status(401).body("Not authenticated");
+        if (!StringUtils.hasText(jwt)) {
+            return ResponseEntity.status(401).body("No token provided");
         }
 
-        String token = (String) session.getAttribute("jwt_token");
-        Long userId = (Long) session.getAttribute("user_id");
-        String email = (String) session.getAttribute("user_email");
-        String name = (String) session.getAttribute("user_name");
-        String picture = (String) session.getAttribute("user_picture");
-
-        if (token == null) {
-            return ResponseEntity.status(401).body("Not authenticated");
+        // Validate token
+        if (!tokenProvider.validateToken(jwt)) {
+            return ResponseEntity.status(401).body("Invalid or expired token");
         }
 
-        UserDTO userDTO = new UserDTO(userId, email, name, picture);
-        AuthResponseDTO response = new AuthResponseDTO(token, userDTO);
+        // Get user ID from token
+        Long userId = tokenProvider.getUserIdFromToken(jwt);
 
-        // Clear session after retrieving
-        session.invalidate();
+        // Fetch user from database
+        User user = userService.findById(userId);
+
+        if (user == null) {
+            return ResponseEntity.status(401).body("User not found");
+        }
+
+        UserDTO userDTO = new UserDTO(user.getId(), user.getEmail(), user.getName(), user.getPictureUrl());
+        AuthResponseDTO response = new AuthResponseDTO(jwt, userDTO);
 
         return ResponseEntity.ok(response);
+    }
+
+    private String getJwtFromRequest(HttpServletRequest request) {
+        String bearerToken = request.getHeader("Authorization");
+        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
+            return bearerToken.substring(7);
+        }
+        return null;
     }
 }
 

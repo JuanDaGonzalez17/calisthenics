@@ -31,6 +31,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public User findOrCreateUser(String email, String name, String googleId, String pictureUrl) {
         return userRepository.findByEmail(email)
                 .orElseGet(() -> {
