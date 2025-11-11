@@ -1,5 +1,5 @@
 // Auth service to handle backend authentication
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export interface User {
   id: number;
@@ -48,29 +48,58 @@ class AuthService {
     window.location.href = `${API_BASE_URL}/oauth2/authorization/google`;
   }
 
-  // Handle OAuth callback (extract token from URL or fetch from backend)
+  // Handle OAuth callback (extract token from URL query parameters)
   async handleCallback(): Promise<User | null> {
     try {
-      // After OAuth, Spring Security should redirect back to frontend
-      // You'll need to implement a backend endpoint that returns user info + JWT
-      const response = await fetch(`${API_BASE_URL}/api/auth/user`, {
-        credentials: "include", // Include cookies for session
-      });
+      // Check if we have a token in the URL (backend redirects with ?token=...)
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get("token");
 
-      if (!response.ok) {
-        throw new Error("Failed to get user info");
+      if (token) {
+        // Store the token
+        this.setToken(token);
+
+        // Decode JWT to get user info (JWT format: header.payload.signature)
+        try {
+          const payload = JSON.parse(atob(token.split(".")[1]));
+          const user: User = {
+            id: payload.sub || payload.userId || 0,
+            email: payload.email || payload.sub,
+            name: payload.name || "",
+            picture: payload.picture || undefined,
+          };
+
+          this.setUser(user);
+
+          // Clean up URL by removing token parameter
+          window.history.replaceState({}, document.title, window.location.pathname);
+
+          return user;
+        } catch (decodeError) {
+          console.error("Error decoding token:", decodeError);
+        }
       }
 
-      const data = await response.json();
+      // If no token in URL, try to fetch user info from backend using stored token
+      const storedToken = this.getToken();
+      if (storedToken) {
+        const response = await fetch(`${API_BASE_URL}/api/auth/user`, {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        });
 
-      // Store token and user info
-      if (data.token) {
-        this.setToken(data.token);
-      }
-
-      if (data.user) {
-        this.setUser(data.user);
-        return data.user;
+        if (response.ok) {
+          const userData = await response.json();
+          const user: User = {
+            id: userData.id || 0,
+            email: userData.email,
+            name: userData.name,
+            picture: userData.picture,
+          };
+          this.setUser(user);
+          return user;
+        }
       }
 
       return null;
